@@ -1,0 +1,114 @@
+import streamlit as st
+from streamlit_option_menu import option_menu
+import json
+import os
+
+# Define the path to the count file
+COUNT_FILE_PATH = "elevator_counts.txt"
+
+# Load counts from file
+def load_counts():
+    if not os.path.exists(COUNT_FILE_PATH):
+        # Initialize the file if it doesn't exist
+        with open(COUNT_FILE_PATH, 'w') as file:
+            json.dump({"A": 0, "B": 0, "C": 0, "D": 0}, file)
+
+    with open(COUNT_FILE_PATH, 'r') as file:
+        return json.load(file)
+
+def load_line_counts():
+    if not os.path.exists('elevatorline.txt'):
+        with open('elevatorline.txt', 'w') as file:
+            json.dump({"A": 0, "B": 0, "C": 0, "D": 0}, file)
+    with open(COUNT_FILE_PATH, 'r') as file:
+        return json.load(file)
+
+# Save counts to file
+def save_counts(counts):
+    with open(COUNT_FILE_PATH, 'w') as file:
+        json.dump(counts, file)
+
+def save_line_counts(length):
+    with open("elevatorline.txt", 'w') as file:
+        json.dump(length, file)
+
+# Main function for the Streamlit app
+def main():
+
+    with st.sidebar:
+        selected = option_menu("BTHS Elevator Tracker", ["Elevator Status", 'Elevator Line'], 
+            icons=['gear', 'person'], menu_icon="building-fill-up", default_index=1)
+        selected
+
+    if selected == "Elevator Status":
+        st.title("Elevator Status")
+    
+        # Load current counts
+        counts = load_counts()
+    
+        # Initialize session state for counts
+        for elevator in counts:
+            if f"count_{elevator}" not in st.session_state:
+                st.session_state[f"count_{elevator}"] = counts[elevator]
+    
+        # Function to update count
+        def update_count(elevator):
+            counts[elevator] += 1
+            save_counts(counts)
+            st.session_state[f"count_{elevator}"] = counts[elevator]
+    
+        def decrement_count(elevator):
+            if(counts[elevator] > 0):
+                counts[elevator] -= 1
+                save_counts(counts)
+                st.session_state[f"count_{elevator}"] = counts[elevator]
+    
+        def update_status(elevator):
+            if(counts[elevator] > 10):
+                st.write("Elevator " + elevator + " is likely out of order")
+    
+    
+        if 'run_button' in st.session_state and st.session_state.run_button == True:
+            st.session_state.running = True
+        else:
+            st.session_state.running = False
+    
+        
+        
+        # Display counts and buttons for each elevator
+        for elevator in counts:        
+            st.write(f"Elevator {elevator}: {st.session_state[f'count_{elevator}']} other {('person' if st.session_state[f'count_{elevator}'] == 1 else 'people')} think the elevator is broken.")
+            if st.button(f"Elevator {elevator} is broken", disabled=st.session_state.running, key=elevator ):
+                update_count(elevator)
+            if st.button(f"Elevator {elevator} is working" ):
+                decrement_count(elevator)
+            update_status(elevator)   
+
+    if selected == "Elevator Line":
+        lines = load_line_counts()
+        for elevator in lines:
+            if f"line_{elevator}" not in st.session_state:
+                st.session_state[f"line_{elevator}"] = lines[elevator]
+        
+        def change_length(elevator, button):
+            if(button == "Short: (~0 - 10)"):
+                lines[elevator] +=1
+                save_line_counts(elevator)
+                st.session_state[f"line_{elevator}"] = lines[elevator]
+                
+                
+        st.title("Elevator Line")
+        st.write("These are the approximate line lengths for all the elevators")
+        if st.checkbox("I want to add my approximate amount of people in line for an elevator"):
+            elevator = st.selectbox("Please select the elevator you want to add to", {"Elevator A", "Elevator B", "Elevator C", "Elevator D"})
+            line = st.selectbox("Please enter in the accurate approximation of the elevator line.", {"Short: (~0 - 10)", "Medium: 11- 30", "Long: 30 - 60", "Very Long: 60+"})
+            if(st.button("Submit")):
+                change_length(elevator, line)
+                
+                
+            
+            
+        
+
+if __name__ == "__main__":
+    main()
