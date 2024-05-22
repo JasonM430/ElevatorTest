@@ -19,7 +19,7 @@ def load_counts():
 def load_line_counts():
     if not os.path.exists('elevatorline.txt'):
         with open('elevatorline.txt', 'w') as file:
-            json.dump({"A": 0, "B": 0, "C": 0, "D": 0}, file)
+            json.dump({"Elevator A": 0, "Elevator B": 0, "Elevator C": 0, "Elevator D": 0}, file)
     with open(COUNT_FILE_PATH, 'r') as file:
         return json.load(file)
 
@@ -31,6 +31,12 @@ def save_counts(counts):
 def save_line_counts(length):
     with open("elevatorline.txt", 'w') as file:
         json.dump(length, file)
+
+def change_length(elevator, line):
+    if(line == "Short: (~0 - 10)"):
+        lines[elevator] += 1
+        save_line_counts(elevator)
+        st.session_state[f"line_{elevator}"] = lines[elevator]
 
 # Main function for the Streamlit app
 def main():
@@ -90,11 +96,11 @@ def main():
             if f"line_{elevator}" not in st.session_state:
                 st.session_state[f"line_{elevator}"] = lines[elevator]
         
-        def change_length(elevator, button):
-            if(button == "Short: (~0 - 10)"):
-                lines[elevator] +=1
-                save_line_counts(elevator)
-                st.session_state[f"line_{elevator}"] = lines[elevator]
+        # def change_length(elevator, line):
+        #     if(line == "Short: (~0 - 10)"):
+        #         lines[elevator] += 1
+        #         save_line_counts(elevator)
+        #         st.session_state[f"line_{elevator}"] = lines[elevator]
                 
                 
         st.title("Elevator Line")
