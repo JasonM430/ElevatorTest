@@ -81,14 +81,6 @@ def main():
         for elevator in counts:
             update_title_status(elevator)
             st.write(f"Elevator {elevator}: {st.session_state[f'count_{elevator}']} other {('person' if st.session_state[f'count_{elevator}'] == 1 else 'people')} think the elevator is broken.")
-            if elevator == "A":
-                st.image("ElevatorA.png", use_column_width=True)
-            if elevator == "B":
-                st.image("ElevatorB.png", use_column_width=True)
-            if elevator == "C":
-                st.image("ElevatorC.png", use_column_width=True)
-            if elevator == "D":
-                st.image("ElevatorD.png", use_column_width=True)
             if st.button(f"Elevator {elevator} is broken", key=f"broken_{elevator}"):
                 update_count(elevator)
             if st.button(f"Elevator {elevator} is working", key=f"working_{elevator}"):
