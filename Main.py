@@ -147,7 +147,7 @@ def main():
 
 
           events = ['nothing', 'item', 'fight', 'boss_fight', 'boss_fight_v2', 'boss_fight_v3' , 'trap']
-          probabilities = [0, 0, 0, 0, 1, 0, 0]  
+          probabilities = [0, 1, 0, 0, 0, 0, 0]  
 
           st.session_state.floor += 1
           event = random.choices(events, probabilities, k=1)[0]
@@ -160,7 +160,7 @@ def main():
 
             if len(st.session_state.inventory) < MAX_INVENTORY_SIZE:
                   item_list = (['Sword', 'Katana', 'Golden Sword','Magical Sword', 'Shield', 'Magic Shield', 'Health Potion', 'Curse Potion', 'Gambler\'s Box'])
-                  probabilities = [0.25, 0.05, 0.03, 0.02, 0.25, 0.01 , 0.29, 0.1, 0.01] 
+                  probabilities = [0, 0, 0, 0, 0, 0 , 0, 0, 1] 
 
                   item = random.choices(item_list, probabilities, k=1)[0]
                   st.session_state.message = " You found a " + str(item) + "!"
