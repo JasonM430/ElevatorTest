@@ -172,9 +172,9 @@ def main():
             st.session_state.message = " A wild animal appears! Prepare to fight!"
           elif event == 'boss_fight':
             if st.session_state.floor > 50:
-                st.session_state.message = " An unrestrained mythical dragon breaks free of its chains - it doesn't seem to be happy! Prepare to fight!!"
+                st.session_state.message = "An unrestrained mythical dragon breaks free of its chains - it doesn't seem to be happy! Prepare to fight!!"
             else:
-                st.session_state.message = " A restrained beast attempts to break its chains."
+                st.session_state.message = "A restrained beast attempts to break its chains."
           elif event == 'boss_fight_v2':
             if st.session_state.floor > 100:
               st.session_state.message = " A mysterious figure has appeared. It seems powerful but you can't quite put your finger on its intentions."
@@ -389,7 +389,7 @@ def main():
                   st.write("[Cursed] You attempted to flee, but the wild animal has cast a curse on you.")
                   next_floor()
                   st.session_state.curse += 1
-            if st.session_state.message == " An unrestrained mythical dragon appears- it doesn't seem to be happy! Prepare to fight!!":
+            if st.session_state.message == "An unrestrained mythical dragon breaks free of its chains - it doesn't seem to be happy! Prepare to fight!!":
                   st.write("You tried to flee from a dragon... You got incinerated.")
                   st.session_state.game_over = True
                   st.session_state.message = "gg."
