@@ -188,7 +188,7 @@ def main():
           elif event == 'trap':
             if(st.session_state.defense > 0):
               st.session_state.message = " Your shield protected you from the triggered trap."
-              num = random.randint(1, 3)
+              num = random.randint(1, 4)
               if(num == 1):
                   st.session_state.message = "Your shield has broken!"
                   st.session_state.defense -= 1
