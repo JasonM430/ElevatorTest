@@ -176,7 +176,7 @@ def main():
             else:
                 st.session_state.message = "A restrained beast attempts to break its chains."
           elif event == 'boss_fight_v2':
-            if st.session_state.floor > 100:
+            if st.session_state.floor > 1:
               st.session_state.message = " A mysterious figure has appeared. It seems powerful but you can't quite put your finger on its intentions."
             else:
                 st.session_state.message = " A shadowy figure darts in front of you."
