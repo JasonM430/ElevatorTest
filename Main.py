@@ -124,11 +124,11 @@ def main():
         if 'inventory' not in st.session_state:
           st.session_state.inventory = []
         if 'health' not in st.session_state:
-          st.session_state.health = 100
+          st.session_state.health = 10000
         if 'giant_health' not in st.session_state:
               st.session_state.giant_health = 100
         if 'attack' not in st.session_state:
-              st.session_state.attack = 1
+              st.session_state.attack = 100
         if 'defense' not in st.session_state:
               st.session_state.defense = 0
         if 'curse' not in st.session_state:
