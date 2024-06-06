@@ -219,6 +219,7 @@ elif selected == "Waiting Game":
                     if 10 - num == 0:
                         st.session_state.message = "You were barely able to fight off the animal. Luckily you lost no health."
                     else:
+                        st.session_state.health -= (10-num)
                         st.session_state.message = "You were unable to fight off the animal with your sword! You lost " + str(10 - num) + " health!"
                 else:
                     st.session_state.message = "You fought off the animal with your sword!"
