@@ -160,7 +160,7 @@ def main():
 
             if len(st.session_state.inventory) < MAX_INVENTORY_SIZE:
                   item_list = (['Sword', 'Katana', 'Golden Sword','Magical Sword', 'Shield', 'Magic Shield', 'Health Potion', 'Curse Potion', 'Gambler Box'])
-                  probabilities = [0, 0, 0, 0, 0, 0 , 0, 0, 1] 
+                  probabilities = [1, 0, 0, 0, 0, 0 , 0, 0, 0] 
 
                   item = random.choices(item_list, probabilities, k=1)[0]
                   st.session_state.message = " You found a " + str(item) + "!"
