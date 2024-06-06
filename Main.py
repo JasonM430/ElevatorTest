@@ -13,7 +13,7 @@ LINE_FILE_PATH = "elevator_line_counts.txt"
 def load_counts():
     if not os.path.exists(COUNT_FILE_PATH):
         with open(COUNT_FILE_PATH, 'w') as file:
-            json.dump({"A": 0, "B": 0, "C": 0, "D": 0}, file) #AI
+            json.dump({"A": 0, "B": 0, "C": 0, "D": 0, "E": 0}, file) #AI
     with open(COUNT_FILE_PATH, 'r') as file:
         return json.load(file)
 
