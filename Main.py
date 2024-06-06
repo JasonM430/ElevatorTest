@@ -419,7 +419,7 @@ elif selected == "Waiting Game":
     else:
       if st.button("Go to next floor"):
         if st.session_state.message == " A wild animal appears! Prepare to fight!":
-          num = random.randint(1, 2)
+          num = random.randint(1, 4)
           if num == 1:
               st.write("[Cursed] You attempted to flee, but the wild animal has cast a curse on you.")
               next_floor()
