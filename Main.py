@@ -159,7 +159,7 @@ def main():
             st.session_state.message = " Nothing happens."
           if event == 'item':
             if len(st.session_state.inventory) < MAX_INVENTORY_SIZE:
-                  item_list = (['Sword', 'Katana', 'Golden Sword','Magical Sword', 'Shield', 'Magic Shield', 'Health Potion', 'Curse Potion', 'Gambler\'s Box'])
+                  item_list = (['Sword', 'Katana', 'Golden Sword','Magical Sword', 'Shield', 'Magic Shield', 'Health Potion', 'Curse Potion', 'Gambler\'s Box (Very Rare)'])
                   probabilities = [0, 0, 0, 0, 0, 0 , 0, 0, 1] 
 
                   item = random.choices(item_list, probabilities, k=1)[0]
@@ -350,8 +350,9 @@ def main():
                     st.session_state.curse = 0
                 st.session_state.inventory.remove(item)
                 st.session_state.message = "You drank the curse potion to remove 2 curses"
-            if item == 'Gambler\'s Box':
+            if item == 'Gambler\'s Box (Very Rare)':
                 st.session_state.message = "Gambling gambling gambling!!!!"
+                st.session_state.inventory.remove(item)
                 num = random.randint(1, 7)
                 if num == 1:
                     st.session_state.defense += 100
