@@ -85,34 +85,34 @@ if selected == "Elevator Status":
 
 elif selected == "Elevator Line":
     st.title("Elevator Line Approximates")
-        st.write("These are the approximate line lengths for all the elevators")
+    st.write("These are the approximate line lengths for all the elevators")
 
-        lines = load_line_counts()
-        for elevator in lines:
-            if f"line_{elevator}" not in st.session_state:
-                st.session_state[f"line_{elevator}"] = lines[elevator]
-
-        def update_line(elevator, length):
-            lines[elevator] = length
-            save_line_counts(lines)
+    lines = load_line_counts()
+    for elevator in lines:
+        if f"line_{elevator}" not in st.session_state:
             st.session_state[f"line_{elevator}"] = lines[elevator]
 
-        placeholders = {}
-        for elevator in lines:
-            placeholders[elevator] = st.empty()
+    def update_line(elevator, length):
+        lines[elevator] = length
+        save_line_counts(lines)
+        st.session_state[f"line_{elevator}"] = lines[elevator]
 
-        for elevator in lines:
-            placeholders[elevator].write(f"Elevator {elevator}: Line length is {st.session_state[f'line_{elevator}']}")
+    placeholders = {}
+    for elevator in lines:
+        placeholders[elevator] = st.empty()
 
-        if st.checkbox("I want to add my approximate amount of people in line for an elevator"):
-            elevator = st.selectbox("Please select the elevator you want to add to", ["A", "B", "C", "D"], key="select_elevator")
-            line_length = st.selectbox("Please enter the accurate approximation of the elevator line.", ["Short: (~0 - 10)", "Medium: (11-30)", "Long: (31-60)", "Very Long: (60+)"], key="select_line_length")
+    for elevator in lines:
+        placeholders[elevator].write(f"Elevator {elevator}: Line length is {st.session_state[f'line_{elevator}']}")
 
-            length_map = {"Short: (~0 - 10)": 5, "Medium: (11-30)": 20, "Long: (31-60)": 45, "Very Long: (60+)": 60}
-            if st.button("Submit", key="submit_line"):
-                update_line(elevator, length_map[line_length])
-                st.success(f"Line length for Elevator {elevator} updated.")
-                st.experimental_rerun()  # Refresh the page to reflect changes
+    if st.checkbox("I want to add my approximate amount of people in line for an elevator"):
+        elevator = st.selectbox("Please select the elevator you want to add to", ["A", "B", "C", "D"], key="select_elevator")
+        line_length = st.selectbox("Please enter the accurate approximation of the elevator line.", ["Short: (~0 - 10)", "Medium: (11-30)", "Long: (31-60)", "Very Long: (60+)"], key="select_line_length")
+
+        length_map = {"Short: (~0 - 10)": 5, "Medium: (11-30)": 20, "Long: (31-60)": 45, "Very Long: (60+)": 60}
+        if st.button("Submit", key="submit_line"):
+            update_line(elevator, length_map[line_length])
+            st.success(f"Line length for Elevator {elevator} updated.")
+            st.experimental_rerun()  # Refresh the page to reflect changes
 
 
 
