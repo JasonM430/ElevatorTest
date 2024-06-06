@@ -403,11 +403,11 @@ elif selected == "Waiting Game":
 
     st.title("Elevator Adventure")
     st.write(st.session_state.message)
-    st.write(f"Current Health: {st.session_state.health}")
-    st.write(f"Current Floor: {st.session_state.floor}")
-    st.write(f"Current Attack: {st.session_state.attack}")
-    st.write(f"Current Defense: {st.session_state.defense}")
-    st.write(f"Current Curse Level: {st.session_state.curse}")
+    st.write(f"Current **Health**: {st.session_state.health}")
+    st.write(f"Current **Floor**: {st.session_state.floor}")
+    st.write(f"Current **Attack**: {st.session_state.attack}")
+    st.write(f"Current **Defense**: {st.session_state.defense}")
+    st.write(f"Current **Curse Level**: {st.session_state.curse}")
     st.write(f"Inventory: {', '.join(st.session_state.inventory)}") #AI
     if st.session_state.message == " A giant stands before you. It seems pretty tanky. You can't kill it head-on. Find the weak spot high up by finding the attack button.":
         st.write(f"Test: {st.session_state.attack}")
