@@ -104,7 +104,7 @@ elif selected == "Elevator Line":
             elevator = st.selectbox("Please select the elevator you want to add to", ["A", "B", "C", "D"], key="select_elevator")
             line_length = st.selectbox("Please enter the accurate approximation of the elevator line.", ["Short: (~0 - 10)", "Medium: (11-30)", "Long: (31-60)", "Very Long: (60+)"], key="select_line_length")
 
-            length_map = {"Short: (~0 - 10)": 10, "Medium: (11-30)": 30, "Long: (31-60)": 60, "Very Long: (60+)": 100}
+            length_map = {"Short: (~0 - 10)": 5, "Medium: (11-30)": 20, "Long: (31-60)": 45, "Very Long: (60+)": 70}
             if st.button("Submit", key="submit_line"):
                 update_line(elevator, length_map[line_length])
                 st.success(f"Line length for Elevator {elevator} updated.")
