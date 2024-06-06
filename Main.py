@@ -282,35 +282,34 @@ elif selected == "Waiting Game":
         st.write("The weak spot is here. Pick a move. Lower risk means lower chance of receiving an item drop.")
         choices = ["","Stab - Low Risk", "Slash - Medium Risk", "Barrage - High Risk"]
         selected_choice = st.selectbox("Choose one:", choices, key="selected_answer")
-        if st.session_state.answer_submitted:
-            if st.button("Submit Answer", on_click=submit_answer):
-                st.session_state.answer = selected_choice
-            if selected_choice == "Stab - Low Risk":
-                st.session_state.message = "You stab the giant in its weakpoint and kill it."
-            if selected_choice == "Slash - Medium Risk":
-                st.session_state.message = "You slash the giant."
-                num = random.randint(1, 10)
-                if num > 5:
-                    st.session_state.message = "It worked! You've killed the giant."
-                    if num == 6 or num == 8:
-                        st.session_state.inventory.append("Giant Armor")
-                else:
-                    st.session_state.health -= 20
-                    st.session_state.message = "Your attack fatally wounds the giant. The giant angrily attacks back though. You lost 20 health."
-            if selected_choice == "Barrage - High Risk":
-                st.session_state.message = "You sword barrage the giant."
-                num = random.randint(1, 10)
-                if num == 1:
-                    st.session_state.message = "You hit the giant with a barrage of your sword. It's dead."
-                    st.session_state.inventory.append("Giant's Armor")
-                    item = random.randint(1, 10)
-                    if item > 5:
-                        st.session_state.inventory.append("Giant's Tooth")
-                        st.session_state.message = "You find a giant tooth lying in the remains."
-                else:
-                    st.session_state.health -= 50
-                    st.session_state.message = "Your attack failed. The giant, enraged, attacks back before walking away. You lost 50 health."         
-                
+        if st.button("Submit Answer", on_click=submit_answer):
+            st.session_state.answer = selected_choice
+        if selected_choice == "Stab - Low Risk":
+            st.session_state.message = "You stab the giant in its weakpoint and kill it."
+        if selected_choice == "Slash - Medium Risk":
+            st.session_state.message = "You slash the giant."
+            num = random.randint(1, 10)
+            if num > 5:
+                st.session_state.message = "It worked! You've killed the giant."
+                if num == 6 or num == 8:
+                    st.session_state.inventory.append("Giant Armor")
+            else:
+                st.session_state.health -= 20
+                st.session_state.message = "Your attack fatally wounds the giant. The giant angrily attacks back though. You lost 20 health."
+        if selected_choice == "Barrage - High Risk":
+            st.session_state.message = "You sword barrage the giant."
+            num = random.randint(1, 10)
+            if num == 1:
+                st.session_state.message = "You hit the giant with a barrage of your sword. It's dead."
+                st.session_state.inventory.append("Giant's Armor")
+                item = random.randint(1, 10)
+                if item > 5:
+                    st.session_state.inventory.append("Giant's Tooth")
+                    st.session_state.message = "You find a giant tooth lying in the remains."
+            else:
+                st.session_state.health -= 50
+                st.session_state.message = "Your attack failed. The giant, enraged, attacks back before walking away. You lost 50 health."         
+            
 
     def use_item(item):
         if item == 'Health Potion':
