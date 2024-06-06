@@ -1,1 +1,1 @@
-{"Elevator A": 0, "Elevator B": 0, "Elevator C": 0, "Elevator D": 0}
+{"A": 0, "B": 0, "C": 0, "D": 0}
