@@ -282,8 +282,6 @@ elif selected == "Waiting Game":
         st.write("The weak spot is here. Pick a move. Lower risk means lower chance of receiving an item drop.")
         choices = ["","Stab - Low Risk", "Slash - Medium Risk", "Barrage - High Risk"]
         selected_choice = st.selectbox("Choose one:", choices, key="selected_answer")
-        if st.button("Submit Answer", on_click=submit_answer):
-            st.session_state.answer = selected_choice
         if selected_choice == "Stab - Low Risk":
             st.session_state.message = "You stab the giant in its weakpoint and kill it."
         if selected_choice == "Slash - Medium Risk":
