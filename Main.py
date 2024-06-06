@@ -437,6 +437,9 @@ elif selected == "Waiting Game":
             else:
                 st.session_state.message = "The figure chases you and attacks you. You lost 20 health."
                 st.session_state.health -= 20
+        if st.session_state.message == " A giant stands before you. It seems pretty tanky. You can't kill it head-on. Find the weak spot high up by finding the attack button.":
+            st.session_state.message = "You were able to run away easily, since the giant was too slow. But you feel a bit weird."
+            st.session_state.curse +=10
         else:
             next_floor()  
 
