@@ -280,18 +280,11 @@ elif selected == "Waiting Game":
         
     def g_fight():
         st.write("The weak spot is here. Pick a move. Lower risk means lower chance of receiving an item drop.")
-        choices = ["Run - Extreme Risk","Stab - Low Risk", "Slash - Medium Risk", "Barrage - High Risk"]
+        choices = ["","Stab - Low Risk", "Slash - Medium Risk", "Barrage - High Risk"]
         selected_choice = st.selectbox("Choose one:", choices, key="selected_answer")
         if st.session_state.answer_submitted:
             if st.button("Submit Answer", on_click=submit_answer):
                 st.session_state.answer = selected_choice
-            if selected_choice == "Run - Extreme Risk":
-                num = random.randint(1, 10)
-                if num == 1:
-                    st.session_state.message = "You lucked out. You successfully ran away from the giant."
-                else:
-                    st.session_state.health = 1
-                    st.session_state.message = "You try to run away from the giant. It catches you and leaves you on the brink of death."
             if selected_choice == "Stab - Low Risk":
                 st.session_state.message = "You stab the giant in its weakpoint and kill it."
             if selected_choice == "Slash - Medium Risk":
