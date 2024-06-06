@@ -354,11 +354,11 @@ def main():
                 st.session_state.message = "Gambling gambling gambling!!!!"
                 num = random.randint(1, 5)
                 if num == 1:
-                    st.session_state.defense += 10
+                    st.session_state.defense += 100
                 if num == 2:
-                    st.session_state.attack += 10
+                    st.session_state.attack += 100
                 if num == 3:
-                    st.session_state.curse += 10
+                    st.session_state.curse += 20
                 if num == 4:
                     st.session_state.health += 100
                 if num == 5:
