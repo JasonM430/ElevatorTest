@@ -83,31 +83,27 @@ if selected == "Elevator Status":
             decrement_count(elevator)
         # update_status(elevator)
 
-elif selected == "Elevator Line":
-        st.title("Elevator Line")
-        st.write("These are the approximate line lengths for all the elevators")
-        
+if selected == "Elevator Line":
         lines = load_line_counts()
         for elevator in lines:
             if f"line_{elevator}" not in st.session_state:
                 st.session_state[f"line_{elevator}"] = lines[elevator]
         
-        def update_line(elevator, length):
-            lines[elevator] = length
-            save_line_counts(lines)
-            st.session_state[f"line_{elevator}"] = lines[elevator]
-        
-        for elevator in lines:
-            st.write(f"Elevator {elevator}: Line length is {st.session_state[f'line_{elevator}']}")
-        
+        def change_length(elevator, line):
+            if(line == "Short: (~0 - 10)"):
+                lines[elevator] += 1
+                save_line_counts(line)
+                st.session_state[f"line_{elevator}"] = lines[elevator]
+                
+                
+        st.title("Elevator Line")
+        st.write("These are the approximate line lengths for all the elevators")
         if st.checkbox("I want to add my approximate amount of people in line for an elevator"):
-            elevator = st.selectbox("Please select the elevator you want to add to", ["A", "B", "C", "D"], key="select_elevator")
-            line_length = st.selectbox("Please enter the accurate approximation of the elevator line.", ["Short: (~0 - 10)", "Medium: (11-30)", "Long: (31-60)", "Very Long: (60+)"], key="select_line_length")
-            
-            length_map = {"Short: (~0 - 10)": 10, "Medium: (11-30)": 30, "Long: (31-60)": 60, "Very Long: (60+)": 100}
-            if st.button("Submit", key="submit_line"):
-                update_line(elevator, length_map[line_length])
-                st.success(f"Line length for Elevator {elevator} updated.")
+            elevator = st.selectbox("Please select the elevator you want to add to", {"Elevator A", "Elevator B", "Elevator C", "Elevator D"})
+            line = st.selectbox("Please enter in the accurate approximation of the elevator line.", {"Short: (~0 - 10)", "Medium: 11- 30", "Long: 30 - 60", "Very Long: 60+"})
+            if(st.button("Submit")):
+                change_length(elevator, line)
+
 
 elif selected == "Waiting Game":
 
