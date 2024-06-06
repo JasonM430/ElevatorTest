@@ -108,6 +108,7 @@ elif selected == "Elevator Line":
             if st.button("Submit", key="submit_line"):
                 update_line(elevator, length_map[line_length])
                 st.success(f"Line length for Elevator {elevator} updated.")
+                st.rerun()
 
 
 
