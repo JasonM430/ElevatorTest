@@ -410,8 +410,8 @@ elif selected == "Waiting Game":
     st.write(f"Current **Defense**: {st.session_state.defense}")
     st.write(f"Current **Curse Level**: {st.session_state.curse}")
     st.write(f"Inventory: {', '.join(st.session_state.inventory)}") #AI
-    if st.session_state.message == " A giant stands before you. It seems pretty tanky. You can't kill it head-on. Find the weak spot high up by finding the attack button.":
-        st.write(f"Test: {st.session_state.attack}")
+    # if st.session_state.message == " A giant stands before you. It seems pretty tanky. You can't kill it head-on. Find the weak spot high up by finding the attack button.":
+    #     st.write(f"Test: {st.session_state.attack}")
     
 
     if st.session_state.game_over:
