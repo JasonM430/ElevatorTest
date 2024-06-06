@@ -154,7 +154,6 @@ elif selected == "Waiting Game":
 
       events = ['nothing', 'item', 'fight', 'boss_fight', 'boss_fight_v2', 'boss_fight_v3' , 'trap']
       probabilities = [0.1, 0.3, 0.25, 0.05, 0.05, 0.05, 0.2] 
-      probabilities = [0, 0, 0, 0, 0, 1, 0] 
 
       st.session_state.floor += 1
       event = random.choices(events, probabilities, k=1)[0]
