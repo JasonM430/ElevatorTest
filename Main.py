@@ -365,9 +365,9 @@ def main():
                     st.session_state.inventory.append('Gambler\'s Blade')
                     st.session_state.message = "You took the gamble and it paid off!"
             if item == 'Gambler\'s Blade':
-                st.session_state.attack += 100
+                st.session_state.attack += 200
                 st.session_state.inventory.remove(item)
-                st.session_state.message = "You gain 100 attack!"
+                st.session_state.message = "You are now a true gambler. Remind your friends that 99.99% of gamblers quit before they hit it big. Your attack increased by 200!"
 
 
         st.title("Elevator Adventure")
