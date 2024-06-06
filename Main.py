@@ -352,11 +352,11 @@ def main():
                 st.session_state.message = "You drank the curse potion to remove 2 curses"
             if item == 'Gambler\'s Box':
                 st.session_state.message = "Gambling gambling gambling!!!!"
-                num = random.randint(1, 5)
+                num = random.randint(1, 7)
                 if num == 1:
                     st.session_state.defense += 100
                 if num == 2:
-                    st.session_state.attack += 100
+                    st.session_state.attack += 50
                 if num == 3:
                     st.session_state.curse += 20
                 if num == 4:
@@ -364,6 +364,10 @@ def main():
                 if num == 5:
                     st.session_state.inventory.append('Gambler\'s Blade')
                     st.session_state.message = "You took the gamble and it paid off!"
+                if num == 6:
+                    st.session_state.attack -=100
+                if num == 7:
+                    st.session_state.defense == 0
             if item == 'Gambler\'s Blade':
                 st.session_state.attack += 200
                 st.session_state.inventory.remove(item)
