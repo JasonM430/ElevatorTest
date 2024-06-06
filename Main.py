@@ -188,7 +188,7 @@ elif selected == "Waiting Game":
         else:
             st.session_state.message = "A shadowy figure darts in front of you and then backs away."
       elif event == 'boss_fight_v3':
-        if st.session_state.floor > 200: 
+        if st.session_state.floor > 2: 
           st.session_state.message = " A giant stands before you. It seems pretty tanky. You can't kill it head-on. Find the weak spot high up by finding the attack button."
         else:
           st.session_state.message = "You hear a large sound from a higher floor."
