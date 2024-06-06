@@ -418,7 +418,7 @@ elif selected == "Waiting Game":
       st.write("Game Over. Restart the game to play again.")
     else:
       if st.button("Go to next floor"):
-        if st.session_state.event == 'fight' and "wild animal" in st.session_state.message:
+        if st.session_state.message == " A wild animal appears! Prepare to fight!":
           num = random.randint(1, 2)
           if num == 1:
               st.write("[Cursed] You attempted to flee, but the wild animal has cast a curse on you.")
