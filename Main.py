@@ -157,7 +157,7 @@ def main():
 
           if event == 'nothing':
             st.session_state.message = " Nothing happens."
-
+          if event == 'item':
             if len(st.session_state.inventory) < MAX_INVENTORY_SIZE:
                   item_list = (['Sword', 'Katana', 'Golden Sword','Magical Sword', 'Shield', 'Magic Shield', 'Health Potion', 'Curse Potion', 'Gambler Box'])
                   probabilities = [1, 0, 0, 0, 0, 0 , 0, 0, 0] 
