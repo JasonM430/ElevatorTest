@@ -98,7 +98,7 @@ elif selected == "Elevator Line":
             st.session_state[f"line_{elevator}"] = lines[elevator]
 
         for elevator in lines:
-            st.write(f"Elevator {elevator}: Line length is {st.session_state[f'line_{elevator}']}")
+            st.write(f"Elevator {elevator}: Line length is around {st.session_state[f'line_{elevator}']}")
 
         if st.checkbox("I want to add my approximate amount of people in line for an elevator"):
             elevator = st.selectbox("Please select the elevator you want to add to", ["A", "B", "C", "D"], key="select_elevator")
