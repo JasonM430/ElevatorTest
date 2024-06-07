@@ -41,6 +41,7 @@ with st.sidebar:
 
 if selected == "Home":
     st.title("Welcome to the BTHS Elevator Tracker!")
+    st.image("Screenshot 2024-06-07 023217.png", use_column_width=True)
     st.markdown("![Alt Text](https://i.pinimg.com/originals/06/ee/c5/06eec5cf477e745d92617bf473308323.gif)")
 
 if selected == "Elevator Status":
