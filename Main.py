@@ -40,7 +40,7 @@ with st.sidebar:
         icons=['house', 'gear', 'person', 'controller'], menu_icon="building", default_index=0)
 
 if selected == "Home":
-    st.title("Welcome to the BTHS Elevator Tracker")
+    st.title("Welcome to the BTHS Elevator Tracker!")
     st.markdown("![Alt Text](https://i.pinimg.com/originals/06/ee/c5/06eec5cf477e745d92617bf473308323.gif)")
 
 if selected == "Elevator Status":
