@@ -1,5 +1,3 @@
-//Some AI was used for storing user data in the elevator counts and line counts, as well as the more advanced streamlit features.
-
 import streamlit as st
 from streamlit.elements.widgets.button import ButtonMixin
 from streamlit.runtime.state import session_state_proxy
