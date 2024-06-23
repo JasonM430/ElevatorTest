@@ -1,4 +1,4 @@
-import streamlit as st
+jimport streamlit as st
 from streamlit.elements.widgets.button import ButtonMixin
 from streamlit.runtime.state import session_state_proxy
 from streamlit_option_menu import option_menu
